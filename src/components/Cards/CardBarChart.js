@@ -1,35 +1,45 @@
 import React from "react";
 import Chart from "chart.js";
+import useAsync from "hook/useAsync";
+import ServiceOrder from "service/ServiceOrder";
 
-export default function CardBarChart() {
+export default function CardBarChart({ invoiceStatistics2023, invoiceStatistics2022 }) {
+
+
   React.useEffect(() => {
     let config = {
       type: "bar",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
+          "Tháng 1",
+          "Tháng 2",
+          "Tháng 3",
+          "Tháng 4",
+          "Tháng 5",
+          "Tháng 6",
+          "Tháng 7",
+          "Tháng 8",
+          "Tháng 9",
+          "Tháng 10",
+          "Tháng 11",
+          "Tháng 12",
+
         ],
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: 2023,
             backgroundColor: "#ed64a6",
             borderColor: "#ed64a6",
-            data: [30, 78, 56, 34, 100, 45, 13],
+            data: invoiceStatistics2023,
             fill: false,
             barThickness: 8,
           },
           {
-            label: new Date().getFullYear() - 1,
+            label: "2022",
             fill: false,
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [27, 68, 86, 74, 10, 4, 87],
+            data: invoiceStatistics2022,
             barThickness: 8,
           },
         ],
@@ -39,7 +49,7 @@ export default function CardBarChart() {
         responsive: true,
         title: {
           display: false,
-          text: "Orders Chart",
+          text: "Biểu đồ hóa đơn",
         },
         tooltips: {
           mode: "index",
@@ -62,7 +72,7 @@ export default function CardBarChart() {
               display: false,
               scaleLabel: {
                 display: true,
-                labelString: "Month",
+                labelString: "Tháng",
               },
               gridLines: {
                 borderDash: [2],
@@ -79,7 +89,7 @@ export default function CardBarChart() {
               display: true,
               scaleLabel: {
                 display: false,
-                labelString: "Value",
+                labelString: "Số đơn",
               },
               gridLines: {
                 borderDash: [2],
@@ -97,7 +107,7 @@ export default function CardBarChart() {
     };
     let ctx = document.getElementById("bar-chart").getContext("2d");
     window.myBar = new Chart(ctx, config);
-  }, []);
+  }, [invoiceStatistics2023, invoiceStatistics2022]);
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -105,10 +115,10 @@ export default function CardBarChart() {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
               <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
-                Performance
+                Biểu đồ
               </h6>
               <h2 className="text-blueGray-700 text-xl font-semibold">
-                Total orders
+                Thông kê hóa đơn
               </h2>
             </div>
           </div>

@@ -11,10 +11,18 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 // views
 
 import Dashboard from "views/admin/Dashboard.js";
-import Maps from "views/admin/Maps.js";
-import Settings from "views/admin/Settings.js";
-import Tables from "views/admin/Tables.js";
-import Login from "views/admin/Login";
+import SanPham from "views/admin/sanpham/sanpham.js";
+import DanhMuc from "views/admin/danhmuc/danhmuc";
+import ThuongHieu from "views/admin/thuonghieu";
+import HoaDon from "views/admin/hoadon";
+import PhieuNhap from "views/admin/phieunhap";
+import khachHang from "views/admin/khachhang";
+import NhanVien from "views/admin/nhanvien";
+import DanhMucChiTiet from "views/admin/danhmuc/DanhMucChiTiet";
+import ChiNhanh from "views/admin/chinhanh";
+import CuaHang from "views/admin/cuahang";
+import SanPhamChiTiet from "views/admin/sanpham/sanphamchitiet";
+
 
 export default function Admin() {
   return (
@@ -24,13 +32,26 @@ export default function Admin() {
         <AdminNavbar />
         {/* Header */}
         <HeaderStats />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
+        <div className="px-4 md:px-10 mx-auto w-full -m-24 " style={{ height: "1000px" }}>
           <Switch>
             <Route path="/admin/dashboard" exact component={Dashboard} />
-            <Route path="/admin/maps" exact component={Maps} />
-            <Route path="/admin/settings" exact component={Settings} />
-            <Route path="/admin/tables" exact component={Tables} />
-            <Route path="/admin/login-mysql" exact component={Login} />
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/admin/sanpham" exact component={SanPham} />
+            <Route path="/admin/sanpham/:id" exact component={SanPhamChiTiet} />
+
+            <Route path="/admin/danhmuc" exact component={DanhMuc} />
+            <Route path="/admin/danhmuc/:id" exact component={DanhMucChiTiet} />
+
+            <Route path="/admin/thuonghieu" exact component={ThuongHieu} />
+            <Route path="/admin/hoadon" exact component={HoaDon} />
+            <Route path="/admin/phieunhap" exact component={PhieuNhap} />
+            <Route path="/admin/khachHang" exact component={khachHang} />
+            <Route path="/admin/nhanvien" exact component={NhanVien} />
+            <Route path="/admin/chinhanh" exact component={ChiNhanh} />
+            <Route path="/admin/cuahang" exact component={CuaHang} />
+
+
+
 
           </Switch>
           <FooterAdmin />

@@ -122,9 +122,9 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
+                  to="/admin/sanpham"
                 >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-box text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Sản phẩm
                 </Link>
               </li>
@@ -132,36 +132,36 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/register"
+                  to="/admin/danhmuc"
                 >
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-list-alt text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Danh mục
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/register"
+                  to="/admin/thuonghieu"
                 >
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-trademark text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Thương hiệu
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/register"
+                  to="/admin/hoadon"
                 >
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-file-invoice text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Hóa đơn
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/register"
+                  to="/admin/phieunhap"
                 >
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-file-import text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Phiếu nhập
                 </Link>
               </li>
@@ -178,18 +178,18 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
+                  to="/admin/nhanvien"
                 >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-user-tie text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Nhân viên
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
+                  to="/admin/khachhang"
                 >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-users text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Khách hàng
                 </Link>
               </li>
@@ -207,18 +207,18 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
+                  to="/admin/chinhanh"
                 >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-building text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Chi nhánh
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/admin/maps"
+                  to="/admin/cuahang"
                 >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-store text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Cửa hàng
                 </Link>
               </li>
