@@ -1,9 +1,10 @@
-import { Breadcrumb, Button, Col, Divider, Form, Input, Modal, Row, Table } from "antd";
+import { Breadcrumb, Button, Col, Divider, Form, Input, message, Modal, Popconfirm, Row, Table } from "antd";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import Item from "antd/es/list/Item";
 import useAsync from "hook/useAsync";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ServiceDanhMuc from "service/ServiceDanhMuc";
 import ServiceSanPham from "service/ServiceSanPham";
 
@@ -49,13 +50,32 @@ const DanhMuc = () => {
 
                         <Link to={`/admin/danhmuc/${id}`}> <Button type="primary" >Sửa</Button></Link>
 
-                        <Button type="primary" danger>Xóa</Button>
+                        <Popconfirm
+                            title="Xóa dữ liệu"
+                            description="Bạn chắc xóa dữ liệu này?"
+                            onConfirm={() => confirm(id)}
+                            okText="Đồng ý"
+                            cancelText="Hủy"
+                        >
+                            <Button danger>Xóa</Button>
+                        </Popconfirm>
                     </Col>
 
                 </>
             ),
         },
     ];
+    const confirm = async (id) => {
+
+
+        const res = await ServiceDanhMuc.deleteDanhMuc(id)
+        if (res.message == "Đồng bộ xóa thành công") {
+            toast.success("Xóa dữ liệu thành công")
+            Location.reload()
+        }
+        else
+            toast.error("Lỗi xóa dữ liệu, Dữ liệu này đang tồn tại ở bảng khác")
+    }
 
     return (
         <>
@@ -64,8 +84,8 @@ const DanhMuc = () => {
                 <div className="w-full mb-12 px-4">
 
                     <div className="relative">
-                        <Divider orientation="left" className="text-white"><Link to={"/admin/danhmuc/add"}><Button type="primary" shape="round" icon={<i class="fas fa-plus"></i>}  >Thêm dữ liệu</Button></Link> </Divider>
-                        
+                        <Divider orientation="left" className="text-white"><Link to={"/admin/danhmuc/them"}><Button type="primary" shape="round" icon={<i class="fas fa-plus"></i>}  >Thêm dữ liệu</Button></Link> </Divider>
+
                         <Breadcrumb>
                             <BreadcrumbItem >Chức năng</BreadcrumbItem>
                             <BreadcrumbItem >Danh mục</BreadcrumbItem>

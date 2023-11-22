@@ -1,6 +1,7 @@
-import { Button, Col, Form, Input, message, Row, Space } from "antd";
+import { Button, Col, Form, Input, Row, Space } from "antd";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import ServiceDanhMuc from "service/ServiceDanhMuc";
 
 
@@ -31,7 +32,7 @@ const DanhMucChiTiet = () => {
         }
     }, [id])
     const onFinish = async (values) => {
-        message.loading("Đang xử lý")
+
 
         if (id != "add") {
             const body = {
@@ -43,7 +44,7 @@ const DanhMucChiTiet = () => {
             const res = await ServiceDanhMuc.editDanhMuc(body)
 
             if (res.message) {
-                message.success("Sửa dữ liệu thành công và đồng bộ dữ liệu thành công!")
+                toast.success("Sửa dữ liệu thành công và đồng bộ dữ liệu thành công!")
 
             }
 
@@ -58,9 +59,9 @@ const DanhMucChiTiet = () => {
             const res = await ServiceDanhMuc.createDanhMuc(body)
 
             if (res.message == "Đã tồn tại") {
-                message.warning("Mã danh mục đã tồn tại!")
+                toast.warning("Mã danh mục đã tồn tại!")
             } else if (res.message == "Đồng bộ thêm thành công") {
-                message.success("Thêm dữ liệu thành công và đồng bộ dữ liệu thành công!")
+                toast.success("Thêm dữ liệu thành công và đồng bộ dữ liệu thành công!")
             }
 
         }
@@ -121,7 +122,7 @@ const DanhMucChiTiet = () => {
                     >
                         <Space align="end">
 
-                            <Button primary htmlType="submit">
+                            <Button type="primary" htmlType="submit">
                                 {id != "add" ? "Sửa" : " Thêm"}
                             </Button>
                         </Space>

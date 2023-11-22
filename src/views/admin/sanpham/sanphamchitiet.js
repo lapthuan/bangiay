@@ -8,6 +8,7 @@ import ServiceThuongHieu from "service/ServiceThuongHieu";
 import ServiceSanPham from "service/ServiceSanPham";
 import ServiceDanhMuc from "service/ServiceDanhMuc";
 import useAsync from "hook/useAsync";
+import { toast } from "react-toastify";
 
 const { Option } = Select;
 
@@ -38,7 +39,7 @@ const SanPhamChiTiet = () => {
         }
     }, [id])
     const onFinish = async (values) => {
-        message.loading("Đang xử lý")
+
         if (id != "them") {
             const body = {
                 "reqMaGiay": values.reqMaGiay,
@@ -69,9 +70,9 @@ const SanPhamChiTiet = () => {
             const res = await ServiceSanPham.createSanPham(body)
 
             if (res.message == "Đã tồn tại") {
-                message.warning("Mã sản phẩm đã tồn tại!")
+                toast.warning("Mã sản phẩm đã tồn tại!")
             } else if (res.message == "Đồng bộ thêm thành công") {
-                message.success("Thêm dữ liệu thành công và đồng bộ dữ liệu thành công!")
+                toast.success("Thêm dữ liệu thành công và đồng bộ dữ liệu thành công!")
 
             }
         }
@@ -197,7 +198,7 @@ const SanPhamChiTiet = () => {
                 >
                     <Space align="end">
 
-                        <Button htmlType="submit" primary>
+                        <Button type="primary" htmlType="submit">
                             {id != "them" ? "Sửa" : " Thêm"}
                         </Button>
                     </Space>

@@ -1,7 +1,9 @@
-import { Breadcrumb, Button, Col, Divider, Table } from "antd";
+import { Breadcrumb, Button, Col, Divider, Popconfirm, Table } from "antd";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import Item from "antd/es/list/Item";
 import useAsync from "hook/useAsync";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ServiceSanPham from "service/ServiceSanPham";
 import ServiceThuongHieu from "service/ServiceThuongHieu";
 
@@ -49,29 +51,48 @@ const ThuongHieu = () => {
 
         {
             title: 'Công cụ',
-
+            dataIndex: 'MaThuongHieu',
             fixed: 'right',
             width: 200,
-            render: () => (
+            render: (id) => (
                 <>
                     <Col>
 
-                        <Button type="primary" >Sửa</Button>
+                        <Link to={`/admin/thuonghieu/${id}`}> <Button type="primary" >Sửa</Button></Link>
 
-                        <Button type="primary" danger>Xóa</Button>
+                        <Popconfirm
+                            title="Xóa dữ liệu"
+                            description="Bạn chắc xóa dữ liệu này?"
+                            onConfirm={() => confirm(id)}
+                            okText="Đồng ý"
+                            cancelText="Hủy"
+                        >
+                            <Button danger>Xóa</Button>
+                        </Popconfirm>
                     </Col>
 
                 </>
             ),
         },
     ];
+    const confirm = async (id) => {
 
+        const res = await ServiceThuongHieu.deleteThuongHieu(id)
+        if (res.message == "Đồng bộ xóa thành công") {
+            toast.success("Xóa dữ liệu thành công")
+            setTimeout(() => {
+                window.location.reload()
+            }, 3000);
+        }
+        else
+            toast.error("Lỗi xóa dữ liệu, Dữ liệu này đang tồn tại ở bảng khác")
+    }
     return (
         <>
             <div className="flex flex-wrap mt-32">
                 <div className="w-full mb-12 px-4">
                     <div className="relative">
-                        <Divider orientation="left" >Danh sách thương hiệu</Divider>
+                        <Divider orientation="left" className="text-white"><Link to={"/admin/thuonghieu/them"}><Button type="primary" shape="round" icon={<i class="fas fa-plus"></i>}  >Thêm dữ liệu</Button></Link> </Divider>
 
                         <Breadcrumb >
                             <BreadcrumbItem >Chức năng</BreadcrumbItem>

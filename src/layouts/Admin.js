@@ -13,20 +13,38 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 import Dashboard from "views/admin/Dashboard.js";
 import SanPham from "views/admin/sanpham/sanpham.js";
 import DanhMuc from "views/admin/danhmuc/danhmuc";
-import ThuongHieu from "views/admin/thuonghieu";
+import ThuongHieu from "views/admin/thuonghieu/thuonghieu";
 import HoaDon from "views/admin/hoadon";
 import PhieuNhap from "views/admin/phieunhap";
-import khachHang from "views/admin/khachhang";
-import NhanVien from "views/admin/nhanvien";
+import khachHang from "views/admin/khachhang/khachhang";
+import NhanVien from "views/admin/nhanvien/nhanvien";
 import DanhMucChiTiet from "views/admin/danhmuc/DanhMucChiTiet";
 import ChiNhanh from "views/admin/chinhanh";
 import CuaHang from "views/admin/cuahang";
 import SanPhamChiTiet from "views/admin/sanpham/sanphamchitiet";
 
 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import ThuongHieuChiTiet from "views/admin/thuonghieu/thuonghieuchitiet";
+import NhanVienChiTiet from "views/admin/nhanvien/nhanvienchitiet";
+import KhachHangChiTiet from "views/admin/khachhang/khachhangchitiet";
+
 export default function Admin() {
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Sidebar />
       <div className="relative md:ml-64 bg-blueGray-100">
         <AdminNavbar />
@@ -43,10 +61,17 @@ export default function Admin() {
             <Route path="/admin/danhmuc/:id" exact component={DanhMucChiTiet} />
 
             <Route path="/admin/thuonghieu" exact component={ThuongHieu} />
+            <Route path="/admin/thuonghieu/:id" exact component={ThuongHieuChiTiet} />
+
             <Route path="/admin/hoadon" exact component={HoaDon} />
             <Route path="/admin/phieunhap" exact component={PhieuNhap} />
+
             <Route path="/admin/khachHang" exact component={khachHang} />
+            <Route path="/admin/khachHang/:id" exact component={KhachHangChiTiet} />
+
             <Route path="/admin/nhanvien" exact component={NhanVien} />
+            <Route path="/admin/nhanvien/:id" exact component={NhanVienChiTiet} />
+
             <Route path="/admin/chinhanh" exact component={ChiNhanh} />
             <Route path="/admin/cuahang" exact component={CuaHang} />
 
