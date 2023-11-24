@@ -71,7 +71,7 @@ const DanhMuc = () => {
         const res = await ServiceDanhMuc.deleteDanhMuc(id)
         if (res.message == "Đồng bộ xóa thành công") {
             toast.success("Xóa dữ liệu thành công")
-            Location.reload()
+            window.location.reload()
         }
         else
             toast.error("Lỗi xóa dữ liệu, Dữ liệu này đang tồn tại ở bảng khác")

@@ -20,7 +20,7 @@ const ServiceDeliveryReceipt = {
         return requests.get(`/chitietphieunhap/${id}`);
     },
     getDeliveryReceiptDetails: async (mapn, mamh) => {
-        return requests.get(`/chitietphieunhap/detail?mapn=${mapn}&mamh=${mamh}`);
+        return requests.get(`/chitietphieunhap/detail?mapn=${mapn}&magiay=${mamh}`);
     },
     createDeliveryReceiptDetail: async (body) => {
         return requests.post(`/chitietphieunhap`, body);

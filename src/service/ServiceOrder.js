@@ -23,7 +23,7 @@ const ServiceOrder = {
         return requests.get(`/chitiethoadon/${id}`);
     },
     getAOrderDetails: async (mamh, mahd) => {
-        return requests.get(`/chitiethoadon/detail?mamh=${mamh}&mahd=${mahd}`);
+        return requests.get(`/chitiethoadon/detail?magiay=${mamh}&mahd=${mahd}`);
     },
     createOrderDetail: async (body) => {
         return requests.post(`/chitiethoadon`, body);

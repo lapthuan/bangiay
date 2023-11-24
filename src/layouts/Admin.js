@@ -14,8 +14,8 @@ import Dashboard from "views/admin/Dashboard.js";
 import SanPham from "views/admin/sanpham/sanpham.js";
 import DanhMuc from "views/admin/danhmuc/danhmuc";
 import ThuongHieu from "views/admin/thuonghieu/thuonghieu";
-import HoaDon from "views/admin/hoadon";
-import PhieuNhap from "views/admin/phieunhap";
+import HoaDon from "views/admin/hoadon/hoadon";
+import PhieuNhap from "views/admin/phieunhap/phieunhap";
 import khachHang from "views/admin/khachhang/khachhang";
 import NhanVien from "views/admin/nhanvien/nhanvien";
 import DanhMucChiTiet from "views/admin/danhmuc/DanhMucChiTiet";
@@ -29,6 +29,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import ThuongHieuChiTiet from "views/admin/thuonghieu/thuonghieuchitiet";
 import NhanVienChiTiet from "views/admin/nhanvien/nhanvienchitiet";
 import KhachHangChiTiet from "views/admin/khachhang/khachhangchitiet";
+import HoaDonChiTiet from "views/admin/hoadon/hoadonchitiet";
+import ThemHoaDon from "views/admin/hoadon/themhoadon";
+import SuaPhieuNhap from "views/admin/phieunhap/suaphieunhap";
+import PhieuNhapChiTiet from "views/admin/phieunhap/phieunhapchitiet";
 
 export default function Admin() {
   return (
@@ -64,7 +68,12 @@ export default function Admin() {
             <Route path="/admin/thuonghieu/:id" exact component={ThuongHieuChiTiet} />
 
             <Route path="/admin/hoadon" exact component={HoaDon} />
+            <Route path="/admin/hoadonchitiet" exact component={HoaDonChiTiet} />
+            <Route path="/admin/hoadon/:id" exact component={ThemHoaDon} />
+
             <Route path="/admin/phieunhap" exact component={PhieuNhap} />
+            <Route path="/admin/phieunhapchitiet" exact component={SuaPhieuNhap} />
+            <Route path="/admin/phieunhap/:id" exact component={PhieuNhapChiTiet} />
 
             <Route path="/admin/khachHang" exact component={khachHang} />
             <Route path="/admin/khachHang/:id" exact component={KhachHangChiTiet} />
