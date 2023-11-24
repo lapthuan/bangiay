@@ -177,9 +177,8 @@ const HoaDon = () => {
         const res = await ServiceOrder.getAOrderDetail(id)
         if (res.message != "chi tiết hóa đơn không tồn tại") {
             setData(res)
-            setId(id)
         }
-
+        setId(id)
         setOpen(true);
     };
 

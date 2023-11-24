@@ -190,9 +190,9 @@ const PhieuNhap = () => {
         const res = await ServiceDeliveryReceipt.getDeliveryReceiptDetail(id)
         if (res.message != "chi tiết phiếu nhập không tồn tại") {
             setData(res)
-            setId(id)
+            
         }
-
+        setId(id)
         setOpen(true);
     };
 
