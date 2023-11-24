@@ -124,7 +124,7 @@ const HoaDonChiTiet = () => {
                                         },
                                     ]}
                                 >
-                                    <Input type="number" placeholder="Nhập đơn vị tính" />
+                                    <Input placeholder="Nhập đơn vị tính" />
                                 </Form.Item>
                             </Col>
                         </Row>
