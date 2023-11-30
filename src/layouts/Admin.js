@@ -23,9 +23,8 @@ import ChiNhanh from "views/admin/chinhanh";
 import CuaHang from "views/admin/cuahang";
 import SanPhamChiTiet from "views/admin/sanpham/sanphamchitiet";
 
-
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import ThuongHieuChiTiet from "views/admin/thuonghieu/thuonghieuchitiet";
 import NhanVienChiTiet from "views/admin/nhanvien/nhanvienchitiet";
 import KhachHangChiTiet from "views/admin/khachhang/khachhangchitiet";
@@ -33,6 +32,8 @@ import HoaDonChiTiet from "views/admin/hoadon/hoadonchitiet";
 import ThemHoaDon from "views/admin/hoadon/themhoadon";
 import SuaPhieuNhap from "views/admin/phieunhap/suaphieunhap";
 import PhieuNhapChiTiet from "views/admin/phieunhap/phieunhapchitiet";
+import Account from "views/admin/taikhoan/taikhoan";
+import AccountDetail from "views/admin/taikhoan/taikhoanchitiet";
 
 export default function Admin() {
   return (
@@ -54,7 +55,10 @@ export default function Admin() {
         <AdminNavbar />
         {/* Header */}
         <HeaderStats />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24 " style={{ height: "1000px" }}>
+        <div
+          className="px-4 md:px-10 mx-auto w-full -m-24 "
+          style={{ height: "1000px" }}
+        >
           <Switch>
             <Route path="/admin/dashboard" exact component={Dashboard} />
             <Route path="/" exact component={Dashboard} />
@@ -65,28 +69,51 @@ export default function Admin() {
             <Route path="/admin/danhmuc/:id" exact component={DanhMucChiTiet} />
 
             <Route path="/admin/thuonghieu" exact component={ThuongHieu} />
-            <Route path="/admin/thuonghieu/:id" exact component={ThuongHieuChiTiet} />
+            <Route
+              path="/admin/thuonghieu/:id"
+              exact
+              component={ThuongHieuChiTiet}
+            />
 
             <Route path="/admin/hoadon" exact component={HoaDon} />
-            <Route path="/admin/hoadonchitiet" exact component={HoaDonChiTiet} />
+            <Route
+              path="/admin/hoadonchitiet"
+              exact
+              component={HoaDonChiTiet}
+            />
             <Route path="/admin/hoadon/:id" exact component={ThemHoaDon} />
 
             <Route path="/admin/phieunhap" exact component={PhieuNhap} />
-            <Route path="/admin/phieunhapchitiet" exact component={SuaPhieuNhap} />
-            <Route path="/admin/phieunhap/:id" exact component={PhieuNhapChiTiet} />
+            <Route
+              path="/admin/phieunhapchitiet"
+              exact
+              component={SuaPhieuNhap}
+            />
+            <Route
+              path="/admin/phieunhap/:id"
+              exact
+              component={PhieuNhapChiTiet}
+            />
 
             <Route path="/admin/khachHang" exact component={khachHang} />
-            <Route path="/admin/khachHang/:id" exact component={KhachHangChiTiet} />
+            <Route
+              path="/admin/khachHang/:id"
+              exact
+              component={KhachHangChiTiet}
+            />
 
             <Route path="/admin/nhanvien" exact component={NhanVien} />
-            <Route path="/admin/nhanvien/:id" exact component={NhanVienChiTiet} />
+            <Route
+              path="/admin/nhanvien/:id"
+              exact
+              component={NhanVienChiTiet}
+            />
 
             <Route path="/admin/chinhanh" exact component={ChiNhanh} />
             <Route path="/admin/cuahang" exact component={CuaHang} />
 
-
-
-
+            <Route path="/admin/taikhoan" exact component={Account} />
+            <Route path="/admin/taikhoan/:id" exact component={AccountDetail} />
           </Switch>
           <FooterAdmin />
         </div>
