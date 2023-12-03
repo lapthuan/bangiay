@@ -10,8 +10,11 @@ const ServiceEmployee = {
     createEmployee: async (body) => {
         return requests.post(`/nhanvien`, body);
     },
-    editEmployee: async (body) => {
-        return requests.put(`/nhanvien`, body);
+    loginEmployee: async (body) => {
+        return requests.post(`/nhanvien/login`, body);
+    },
+    editEmployee: async (body, id) => {
+        return requests.put(`/nhanvien/${id}`, body);
     },
     deleteEmployee: async (id) => {
         return requests.delete(`/nhanvien/${id}`);

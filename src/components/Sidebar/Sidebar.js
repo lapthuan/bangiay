@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import { Button } from "antd";
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const User = JSON.parse(localStorage.getItem('user'));
+  const onClick = ({ key }) => {
+    localStorage.removeItem("user")
+    window.location.href = "/auth/login";
+  };
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -26,6 +32,8 @@ export default function Sidebar() {
           >
             Shop giày
           </Link>
+          <p>{(User?.Quyen == false ? "Nhân viên : " : "Admin : ") + User?.TenNhanVien}</p>
+          <Button onClick={onClick} danger>Đăng xuất</Button>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
             <li className="inline-block relative">
@@ -166,85 +174,67 @@ export default function Sidebar() {
                 </Link>
               </li>
             </ul>
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Quản lí
-            </h6>
-            {/* Navigation */}
+            {User?.Quyen == true && <>  {/* Divider */}
+              <hr className="my-4 md:min-w-full" />
+              {/* Heading */}
+              <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                Quản lí
+              </h6>
+              {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/admin/nhanvien"
-                >
-                  <i className="fas fa-user-tie text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Nhân viên
-                </Link>
-              </li>
-              <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/admin/khachhang"
-                >
-                  <i className="fas fa-users text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Khách hàng
-                </Link>
-              </li>
+              <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li className="items-center">
+                  <Link
+                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                    to="/admin/nhanvien"
+                  >
+                    <i className="fas fa-user-tie text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Nhân viên
+                  </Link>
+                </li>
+                <li className="items-center">
+                  <Link
+                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                    to="/admin/khachhang"
+                  >
+                    <i className="fas fa-users text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Khách hàng
+                  </Link>
+                </li>
 
-            </ul>
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Trực thuộc
-            </h6>
-            {/* Navigation */}
+              </ul>
+              {/* Divider */}
+              <hr className="my-4 md:min-w-full" />
+              {/* Heading */}
+              <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                Trực thuộc
+              </h6>
+              {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/admin/chinhanh"
-                >
-                  <i className="fas fa-building text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Chi nhánh
-                </Link>
-              </li>
-              <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/admin/cuahang"
-                >
-                  <i className="fas fa-store text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Cửa hàng
-                </Link>
-              </li>
+              <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li className="items-center">
+                  <Link
+                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                    to="/admin/chinhanh"
+                  >
+                    <i className="fas fa-building text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Chi nhánh
+                  </Link>
+                </li>
+                <li className="items-center">
+                  <Link
+                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                    to="/admin/cuahang"
+                  >
+                    <i className="fas fa-store text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Cửa hàng
+                  </Link>
+                </li>
 
-            </ul>
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Phân tán dữ liệu
-            </h6>
-            {/* Navigation */}
-
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
-                >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Phân tán
-                </Link>
-              </li>
+              </ul>
+            </>}
 
 
-            </ul>
 
 
           </div>

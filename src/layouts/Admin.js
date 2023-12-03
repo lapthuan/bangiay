@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 // components
@@ -35,6 +35,13 @@ import SuaPhieuNhap from "views/admin/phieunhap/suaphieunhap";
 import PhieuNhapChiTiet from "views/admin/phieunhap/phieunhapchitiet";
 
 export default function Admin() {
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('user');
+
+    if (!isLoggedIn) {
+      window.location.href = "/auth/login";
+    }
+  }, [])
   return (
     <>
       <ToastContainer
