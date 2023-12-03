@@ -28,11 +28,6 @@ const Account = () => {
       key: "TenTK",
     },
     {
-      title: "Mật khẩu",
-      dataIndex: "Matkhau",
-      key: "Matkhau",
-    },
-    {
       title: "Nhân viên",
       dataIndex: "MaNV",
       key: "MaNV",

@@ -92,7 +92,7 @@ const AccountDetail = () => {
             <Col span={12}>
               <Form.Item
                 name="reqMatkhau"
-                label="Mậ khẩu"
+                label="Mật khẩu"
                 rules={[
                   {
                     required: true,
@@ -100,7 +100,7 @@ const AccountDetail = () => {
                   },
                 ]}
               >
-                <Input placeholder="Nhập mật khẩu" />
+                <Input type="password" placeholder="Nhập mật khẩu" />
               </Form.Item>
             </Col>
           </Row>
