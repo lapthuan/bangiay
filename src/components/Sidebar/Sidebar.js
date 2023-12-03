@@ -113,10 +113,6 @@ export default function Sidebar() {
                   Bảng điều khiển
                 </Link>
               </li>
-
-
-
-
             </ul>
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
@@ -230,7 +226,15 @@ export default function Sidebar() {
                     Cửa hàng
                   </Link>
                 </li>
-
+                <li className="items-center">
+                  <Link
+                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                    to="/admin/taikhoan"
+                  >
+                    <i className="fas fa-users text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Tài khoản
+                  </Link>
+                </li>
               </ul>
             </>}
 

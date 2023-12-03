@@ -4,64 +4,54 @@ import Item from "antd/es/list/Item";
 import useAsync from "hook/useAsync";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import ServiceCustomer from "service/ServiceCustomer";
-import ServiceEmployee from "service/ServiceEmployee";
-const NhanVien = () => {
-  const { data: nhanvien } = useAsync(() => ServiceEmployee.getAllEmployee());
-  console.log(nhanvien);
+import ServiceSanPham from "service/ServiceSanPham";
+import ServiceAccount from "service/ServiceAccount";
+
+const Account = () => {
+  const { data: taikhoan } = useAsync(() => ServiceAccount.getAllAccount());
+  console.log(taikhoan);
   let dataSource = [];
-  nhanvien?.map((item, i) =>
+  taikhoan?.map((item, i) =>
     dataSource.push({
       key: i + 1,
+      TenTK: item.TenTK,
+      Matkhau: item.Matkhau,
+      Quyen: item.Quyen,
       MaNV: item.MaNV,
-      TenNV: item.TenNV,
-      TenCuaHang: item.TenCuaHang,
-      Diachi: item.DiaChi,
-      Sdt: item.Sdt,
-      email: item.email,
     })
   );
 
   const columns = [
     {
-      title: "Mã nhân viên",
+      title: "Tên tài khoan",
+      dataIndex: "TenTK",
+      key: "TenTK",
+    },
+    {
+      title: "Mật khẩu",
+      dataIndex: "Matkhau",
+      key: "Matkhau",
+    },
+    {
+      title: "Nhân viên",
       dataIndex: "MaNV",
       key: "MaNV",
     },
     {
-      title: "Cửa hàng",
-      dataIndex: "TenCuaHang",
-      key: "TenCuaHang",
+      title: "Quyền",
+      dataIndex: "Quyen",
+      key: "Quyen",
     },
-    {
-      title: "Tên nhân viên",
-      dataIndex: "TenNV",
-      key: "TenNV",
-    },
-    {
-      title: "Địa chỉ",
-      dataIndex: "Diachi",
-      key: "Diachi",
-    },
-    {
-      title: "Số điện thoại",
-      dataIndex: "Sdt",
-      key: "Sdt",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
+
     {
       title: "Công cụ",
+      dataIndex: "TenTK",
       fixed: "right",
-      dataIndex: "MaNV",
       width: 200,
       render: (id) => (
         <>
           <Col>
-            <Link to={`/admin/nhanvien/${id}`}>
+            <Link to={`/admin/taikhoan/${id}`}>
               {" "}
               <Button type="primary">Sửa</Button>
             </Link>
@@ -81,7 +71,7 @@ const NhanVien = () => {
     },
   ];
   const confirm = async (id) => {
-    const res = await ServiceEmployee.deleteEmployee(id);
+    const res = await ServiceAccount.deleteAccount(id);
     if (res.message == "Đồng bộ xóa thành công") {
       toast.success("Xóa dữ liệu thành công");
       setTimeout(() => {
@@ -95,7 +85,7 @@ const NhanVien = () => {
         <div className="w-full mb-12 px-4">
           <div className="relative">
             <Divider orientation="left" className="text-white">
-              <Link to={"/admin/nhanvien/them"}>
+              <Link to={"/admin/taikhoan/them"}>
                 <Button
                   type="primary"
                   shape="round"
@@ -107,9 +97,9 @@ const NhanVien = () => {
             </Divider>
             <Breadcrumb>
               <BreadcrumbItem>Chức năng</BreadcrumbItem>
-              <BreadcrumbItem>Nhân viên</BreadcrumbItem>
+              <BreadcrumbItem>Thương hiệu</BreadcrumbItem>
             </Breadcrumb>
-            <Table dataSource={dataSource} columns={columns} />;
+            <Table dataSource={dataSource} columns={columns} />
           </div>
         </div>
       </div>
@@ -117,4 +107,4 @@ const NhanVien = () => {
   );
 };
 
-export default NhanVien;
+export default Account;
